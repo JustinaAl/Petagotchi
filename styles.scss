@@ -1,0 +1,417 @@
+body{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+
+img#sun{
+    width: 150px;
+    position: fixed;
+    top: 24px;
+    left: 36px;
+    animation: rotateSun 20s linear infinite;
+    
+    @keyframes rotateSun {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+    }
+}
+
+#welcomeM {
+    svg {
+        width: 450px;
+        max-width: 90%;
+        padding-top: 36px;
+    }
+
+    .bounce, .bounce2 {
+        display: inline-block;
+        animation: bounce 4s ease-in-out infinite;
+    }
+
+    .bounce2 {
+        animation-delay: 0.5s;
+    }
+      
+    @keyframes bounce {
+        0%, 50%, 100% {
+            transform: translateY(0);
+        }
+        30% {
+            transform: translateY(-10px);
+        }
+        70% {
+            transform: translateY(-5px);
+        }
+    }
+}
+
+
+#chosenPetsWrap{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+
+    p{
+        font-family: "DynaPuff", system-ui;
+        color: #E0AAAA;
+        font-size: 14px;
+        margin-bottom: 0px !important;
+    }
+}
+  
+
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('img/background.svg');
+    background-size: cover; 
+    background-repeat: no-repeat;
+    
+
+    #petChoosing{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        display: flex;
+        position: fixed;
+        bottom: 5%;
+        left: 50%;
+        transform: translateX(-50%);
+        height: auto;
+
+        .center{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .pet{
+                text-align: center;                
+            }
+        }
+        img{
+            max-height: 350px;
+        }
+
+        img.active{
+            filter: drop-shadow(0 0 10px rgba(19, 255, 11, 0.741));
+        }
+
+        img:hover{
+            filter: drop-shadow(0 0 10px rgba(231, 255, 11, 0.741));
+        }
+
+        input[type="checkbox"]{
+            visibility: hidden;
+        }
+
+        .nameInput{
+            height: 40px;
+
+            input.name{
+                border: 2px dashed #000;
+                background: rgba(255, 255, 255, 0.55);
+                padding: 8px 8px;
+                height: auto;
+                height:99%;
+            }
+
+            button{
+                border: 1px solid #000;
+                background: rgba(255, 255, 255, 0.68);
+                height: 99%;
+            }
+
+            button:hover{
+                background: rgba(66, 225, 42, 0.68);
+            }
+        }
+    }
+}
+
+#chosenPets{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    div{
+        display: flex;
+        justify-content: center;
+        height: 60px;
+        width: 60px;
+        border-radius: 100%;
+        background: rgba(255, 255, 255, 0.547);
+
+        img{width: 80%;}
+    }
+
+
+    #start {
+        background: linear-gradient(145deg, #E0AAAA, #b66060);
+        border-radius: 50%;
+        padding: 8px 8px;
+        border: 1px solid #d3a0ca;
+        color: white;
+        font-size: 14px;
+        font-weight: bold;
+        cursor: pointer;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.239), inset 7px 15px 20px rgba(255, 255, 255, 0.337);
+        transition: all 0.3s ease;
+        width: 70px;
+        height: 70px;
+    }
+
+    #start:hover {
+        transform: scale(1.1);
+        box-shadow: 0 15px 25px rgba(0, 0, 0, 0.348), inset 0 0 15px rgba(255, 255, 255, 0.3);
+    }
+}
+
+.hide{
+    visibility: hidden;
+}
+
+.none{
+    display: none;
+}
+
+.carousel-item img {
+    cursor: pointer;
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon{
+    filter: brightness(0%);
+}
+
+#carouselExampleControls{
+    width: 340px;
+
+    .carousel-inner{
+        width: 100%;
+    }
+}
+
+
+
+//main Game
+
+main.game{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 100px;
+    justify-content: center;
+
+    #petPlace{
+        display: flex;
+        justify-content: space-evenly;
+        box-sizing: border-box;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        display: flex;
+        padding: 0 16px 32px 16px;
+
+        .petBox{
+            max-width:200px;
+            padding: 16px;
+            height: 100%;
+
+            p.petName{
+                text-align: center;
+                font-family: "DynaPuff";
+                font-size: 24px;
+                color: #d1b1dd;
+                margin-bottom: 0px;
+                text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+            }
+
+            @media (max-width: 600px) {
+                p.petName{
+                    font-size: 18px;
+                }
+            }
+
+            @media (max-width: 450px) {
+                p.petName{
+                    font-size: 12px;
+                }
+            }
+            
+    
+            img{
+                width: 100%;
+                margin-bottom: 16px;
+            }
+
+            .buttonbox{
+                display: flex;
+                justify-content: space-evenly;
+                gap: 8px;
+                flex-wrap: wrap;
+                min-width: 99px;
+
+                button.napButton, button.eatButton, button.playButton{
+                    font-family: "DynaPuff";
+                    color: white;
+                    font-size: 14px;
+                    padding: 8px;
+                    border-radius: 50px;
+                    border: 2px solid #c47878;
+                    background: #d79090;
+                }
+
+                @media (max-width: 600px) {
+                    button.napButton, button.eatButton, button.playButton{
+                        font-size: 12px;
+                        padding: 6px;
+                    }
+                  }
+            }
+
+            @media (max-width: 600px) {
+                .buttonbox{
+                    min-width: 0px;
+                }
+              }
+        }
+
+        @media (max-width: 450px) {
+            .petBox{
+                padding: 8px;
+            }
+        }
+    }
+}
+
+.stats{
+    width: 100%;
+
+    p{
+        margin: 0;
+        color: rgb(254, 240, 255);
+    }
+
+    .outsideBar{
+        width:100%;
+        display: flex;
+        justify-content: start;
+        padding: 2px;
+        height: 15px;
+        background-color: white;
+        border-radius: 20px;
+        box-shadow: 3px 6px 10.9px 0px rgba(0, 0, 0, 0.35);
+    }
+
+    .insideBar{
+        width: 50%;
+        height: 100%;
+        border-radius: 20px;
+        background: linear-gradient(180deg, #41E26C 0%, #247C3B 100%);
+    }
+
+    @media (max-width: 600px) {
+        p{
+            font-size: 14px;
+        }
+        .outsideBar{
+            height: 10px;
+        }
+      }
+}
+
+button#historyBtn{
+    position: fixed;
+    top: 16px;
+    right: 70px;
+    display: inline-flex;
+    font-family: "DynaPuff";
+    color: white;
+    font-size: 12px;
+    padding: 6px 12px;
+    gap: 6px;
+    border-radius: 50px;
+    border: 2px solid #c47878;
+    background: #d79090;
+    z-index: 2;
+};
+
+div#historyBox{
+    box-sizing: border-box;
+    padding: 16px 12px;
+    background-color: rgb(247, 235, 235);
+    width: 200px;
+    height: 200px;
+    overflow: auto;
+    position: fixed;
+    border: 2px solid #c47878;
+    border-radius: 10px;
+    top: 33px;
+    right: 16px;
+    z-index: 1;
+
+    ul{
+        padding-left: 8px
+
+    }
+
+    li{
+        font-family: "Sour Gummy";
+        color: #292727;
+        font-size: 14px;
+
+        span{
+            font-size: 14px;
+            color: #6c1111;
+            font-weight: 600;
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    button#historyBtn{
+        right: 40px;
+    }
+    div#historyBox{
+        right: 8px;
+        width: 160px;
+
+        p{
+            font-size: 12px;
+        }
+    }
+}
+
+
+
+::-webkit-scrollbar {
+    width: 10px;
+    padding: 20px;
+}
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px rgb(207, 206, 206); 
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #d79090; 
+    border-radius: 10px;
+}
+  
+::-webkit-scrollbar-thumb:hover {
+    background: #b76868; 
+}
