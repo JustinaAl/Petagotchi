@@ -75,6 +75,7 @@ class Pet {
         this.fullness = 50;
         this.happiness = 50;
         this.history = [];
+        
 
         this.timer();
     }
@@ -90,77 +91,97 @@ class Pet {
             }
 
             this.updateStatBar();
-            this.changeImage();
         }, 10000);
     }
 
     nap() {
         this.energy += 40;
-        if(this.energy > 100){
-            this.energy = 100;
-        }
-
         this.happiness -= 10;
-        if (this.happiness < 0) {
-            this.happiness = 0;
-        }
-
         this.fullness -= 10;
-        if (this.fullness < 0) {
-            this.fullness = 0;
-        }
+        this.maxMin();
 
         this.addHistory(`${this.name}`, "took a nap.");
-        this.checkIfPetOk();
+        this.checkIfChatBubble("I'm feeling recharged!");
     }
 
     play(){
         this.energy -= 10;
-        if(this.energy<0){
-            this.energy = 0;
-        }
-
         this.happiness += 30;
-        if(this.happiness > 100){
-            this.happiness = 100;
-        }
-
         this.fullness -= 10;
-        if (this.fullness < 0) {
-            this.fullness = 0;
-        }
+        this.maxMin();
 
         this.addHistory(`${this.name}`,`had a great time playing with you!`);
-        this.checkIfPetOk();
+        this.checkIfChatBubble("Thaks for playing with me!");
     }
 
     eat(){
         this.energy -= 15;
-        if (this.energy < 0) {
-            this.energy = 0;
-        }
-
         this.happiness += 5;
+        this.fullness += 30;
+        this.maxMin();
+
+        this.addHistory(`${this.name}`, `ate some food.`);
+        this.checkIfChatBubble("It was delicious!");
+    }
+
+    maxMin(){
         if (this.happiness > 100) {
             this.happiness = 100;
+        };
+        if (this.happiness < 0) {
+            this.happiness = 0;
         }
-
-        this.fullness += 30;
         if (this.fullness > 100) {
             this.fullness = 100;
         }
-
-        this.addHistory(`${this.name}`, `ate some food.`);
-        this.checkIfPetOk();
+        if (this.fullness < 0) {
+            this.fullness = 0;
+        }
+        if (this.energy > 100) {
+            this.energy = 100;
+        }
+        if (this.energy < 0) {
+            this.energy = 0;
+        }
     }
 
     checkIfPetOk(){
         if (this.energy === 0 || this.happiness === 0 || this.fullness === 0) {
             this.runAway();
             this.addHistory(this.name,`Ran away because of neglect.`)
+            return false;
         }else{
             this.changeImage();
+            return true;
         }
+    }
+
+    checkIfChatBubble(message){
+        if (this.checkIfPetOk()) {
+            let chatBubble = document.querySelector(`div.bubble`);
+            
+            if (chatBubble) {
+                chatBubble.remove();
+            }
+            this.chatBubble(message);
+        }
+    }
+
+    chatBubble(message){
+        let chat = document.createElement("div");
+        chat.classList.add("bubble", "bubble-bottom");
+        chat.innerHTML = `<p style="margin: 0px;">${message}</p>`;
+        document.querySelector(`#${this.name}.petBox`).append(chat);
+        this.chatBubbleTimer();
+    }
+
+    chatBubbleTimer(){
+        setTimeout(() => {
+            let bubble = document.querySelector(`#${this.name} div.bubble`);
+            if (bubble) {
+                bubble.remove();
+            }
+        }, 4000);
     }
 
     changeImage(){

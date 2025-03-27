@@ -28,7 +28,7 @@
 <path d="M166.5 380L291 489L445 339.5L623.5 489L722 415.5L885 489L1045.5 380L1252 500.5L1503 291V598H-9L166.5 380Z" fill="#87CAC4"/>
 </g>
 <g filter="url(#filter7_i_45_52)">
-<path d="M-14.2301 588.317C124.752 456.465 1166.62 676.046 1509.57 588.317C1852.53 500.589 1509.57 963.11 1509.57 963.11H-14.2301C-14.2301 963.11 -153.212 720.169 -14.2301 588.317Z" fill="#60B236"/>
+<path d="M-14.2301 588.317C124.752 456.465 1166.62 656.728 1509.58 569C1852.53 481.272 1509.58 963.11 1509.58 963.11H-14.2301C-14.2301 963.11 -153.212 720.17 -14.2301 588.317Z" fill="#60B236"/>
 </g>
 <g filter="url(#filter8_di_45_52)">
 <path d="M13.8948 675.674C218.408 530.467 487.426 803.973 769.944 675.674C1052.46 547.375 1296.48 826.848 1525.99 675.674C1755.51 524.5 1525.99 982 1525.99 982H13.8948C13.8948 982 -190.618 820.881 13.8948 675.674Z" fill="#8DB838"/>
@@ -200,7 +200,7 @@
 <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
 <feGaussianBlur stdDeviation="4.05" result="effect1_foregroundBlur_45_52"/>
 </filter>
-<filter id="filter7_i_45_52" x="-97.2" y="545" width="1759.2" height="426.11" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<filter id="filter7_i_45_52" x="-97.2" y="541.922" width="1759.2" height="429.188" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
 <feFlood flood-opacity="0" result="BackgroundImageFix"/>
 <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
 <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
