@@ -1,5 +1,6 @@
 let i = 1;
 let chosenPets = [];
+let isPaused = false;
 
 class PetCage {
     constructor(petCage) {
@@ -82,6 +83,7 @@ class Pet {
 
     timer() {
         setInterval(() => {
+            if (isPaused) return;
             this.energy -= 15;
             this.fullness -= 15;
             this.happiness -= 15;
@@ -185,13 +187,15 @@ class Pet {
     }
 
     changeImage(){
-        let img = document.querySelector(`div#${this.name} img`);
-        if (this.happiness > 50 && this.fullness > 50 && this.energy > 50) {
-            img.src = `img/happy-${this.type}.svg`;
-        }else if (this.happiness > 30 && this.fullness > 30 && this.energy > 30){
-            img.src = `img/${this.type}.svg`;
-        } else{
-            img.src = `img/sad-${this.type}.svg`;
+        if(document.querySelector(`#${this.name}`)){
+            let img = document.querySelector(`div#${this.name} img`);
+            if (this.happiness > 50 && this.fullness > 50 && this.energy > 50) {
+                img.src = `img/happy-${this.type}.svg`;
+            }else if (this.happiness > 30 && this.fullness > 30 && this.energy > 30){
+                img.src = `img/${this.type}.svg`;
+            } else{
+                img.src = `img/sad-${this.type}.svg`;
+            }
         }
     }
 
@@ -200,6 +204,7 @@ class Pet {
         let currentEnergy = this.energy
         let currentHappiness = this.happiness
         let currentFullness = this.fullness
+        this.changeImage();
 
         if(petBox){
             petBox.querySelector('.energy').style.width = currentEnergy + "%";
@@ -216,9 +221,11 @@ class Pet {
     }
 
     runAway(){
-        let pet = document.querySelector(`#${this.name}`);
-        pet.remove();
-        alert(`${this.name} ran away because of neglect`)
+        if(document.querySelector(`#${this.name}`)){
+            let pet = document.querySelector(`#${this.name}`);
+            pet.remove();
+            alert(`${this.name} ran away because of neglect`)
+        }
     }
 }
 
@@ -290,6 +297,24 @@ function createPets(){
         petPlace.append(petBox);
     });
     createHistory();
+    pause();
+}
+
+function pause(){
+    let pauseBtn = document.createElement("button");
+    pauseBtn.id = "pauseBtn";
+    pauseBtn.innerHTML=`<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pause-fill" viewBox="0 0 16 16">
+    <path d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5m5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5"/>
+    </svg>`
+
+    pauseBtn.addEventListener('click', () => {
+        isPaused = !isPaused;
+        pauseBtn.innerHTML = isPaused
+            ? `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play-fill" viewBox="0 0 16 16"><path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393"/></svg>`
+            : `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pause-fill" viewBox="0 0 16 16"><path d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5m5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5"/></svg>`;
+    });
+
+    document.querySelector("main").append(pauseBtn);
 }
 
 function createHistory(){

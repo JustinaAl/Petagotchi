@@ -335,7 +335,7 @@ main.game{
       }
 }
 
-button#historyBtn{
+button#historyBtn, #pauseBtn{
     position: fixed;
     top: 16px;
     right: 70px;
@@ -351,6 +351,14 @@ button#historyBtn{
     z-index: 2;
 };
 
+#pauseBtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 170px;
+    height: 35px;
+}
+
 div#historyBox{
     box-sizing: border-box;
     padding: 16px 12px;
@@ -362,7 +370,7 @@ div#historyBox{
     border: 2px solid #c47878;
     border-radius: 10px;
     top: 33px;
-    right: 16px;
+    right: 40px;
     z-index: 1;
 
     ul{
