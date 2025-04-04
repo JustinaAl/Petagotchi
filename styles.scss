@@ -9,7 +9,7 @@ body{
 }
 
 img#sun{
-    width: 150px;
+    width: 200px;
     position: fixed;
     top: 24px;
     left: 36px;
@@ -38,7 +38,7 @@ img#sun{
     }
 
     .bounce2 {
-        animation-delay: 0.5s;
+        animation-delay: 0.2s;
     }
       
     @keyframes bounce {
@@ -46,7 +46,7 @@ img#sun{
             transform: translateY(0);
         }
         30% {
-            transform: translateY(-10px);
+            transform: translateY(-15px);
         }
         70% {
             transform: translateY(-5px);
@@ -226,7 +226,7 @@ main.game{
 
         .petBox{
             position: relative;
-            max-width:200px;
+            max-width:300px;
             padding: 16px;
             height: 100%;
 
@@ -295,6 +295,10 @@ main.game{
             .petBox{
                 padding: 8px;
             }
+
+            img#sun{
+                max-width: 150px;
+            }
         }
     }
 }
@@ -349,14 +353,18 @@ button#historyBtn, #pauseBtn{
     border: 2px solid #c47878;
     background: #d79090;
     z-index: 2;
+    transition: transform 0.2s ease;
 };
+
+button#historyBtn:hover, #pauseBtn:hover, .eatButton:hover, .playButton:hover, .napButton:hover{
+    transform: scale(1.1);
+}   
 
 #pauseBtn{
     display: flex;
     justify-content: center;
     align-items: center;
     right: 170px;
-    height: 35px;
 }
 
 div#historyBox{
@@ -456,4 +464,75 @@ div#historyBox{
     bottom: -24px;
   }
   
-  
+  #historyBtn > svg, #pauseBtn > svg{
+    width: 16px;
+  }
+
+  @media (min-width: 1100px) {
+    
+    #petPlace > div.petBox{
+        width: 300px !important;
+    }
+}
+
+@media (min-width: 1100px) {
+    
+    #petPlace > div.petBox{
+        max-width: 200px ;
+    }
+
+    #historyBtn{
+        display: flex;
+        align-items: center;
+        box-sizing: border-box;
+        padding: 10px 12px !important;
+        display: flex;
+        justify-content: center;
+        font-size: 20px !important;
+
+        svg{
+            width: 30px;
+        }
+    }
+
+    #pauseBtn{
+        right: 220px;
+        svg{
+            width: 40px;
+        }
+    }
+
+    #historyBox{
+        right: 30px !important;
+        top: 40px !important;
+        width: 300px !important;
+        height: 250px !important;
+        padding-top: 40px !important;
+    }
+
+     div.buttonbox > button.eatButton,  div.buttonbox > button.playButton, div.buttonbox > button.napButton{
+            font-size: 24px !important;
+            padding: 12px 12px !important;
+    }
+
+    #chosenPetsWrap{
+        p{
+            font-size: 20px;
+        }
+
+        #start{
+            width: 80px;
+            height: 80px;
+        }
+    }
+
+    #chosenPets > div{
+        width: 80px;
+        height: 80px;
+    }
+
+    #welcomeM svg {
+        width: 550px ;
+        max-width: 100%;
+    }
+}
