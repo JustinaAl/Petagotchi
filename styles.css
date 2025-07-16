@@ -422,6 +422,14 @@ div#historyBox li span {
     width: 300px !important;
   }
 }
+@media (max-width: 500px) {
+  #petPlace img {
+    height: 250px;
+  }
+  img#sun {
+    width: 120px;
+  }
+}
 @media (min-width: 1100px) {
   #petPlace > div.petBox {
     max-width: 200px;
